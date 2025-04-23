@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const MenuList = ({menuList}) => {
+const MenuList = ({menuList, filterItems}) => {
+
+const [active, setActive] = useState(0);
+
   return (
     <>
     {
         menuList.map((category,index)=>{
            return(
-            <li className="menu-list-item" key={index}>
+            <li className={`${active === index ? 'active-item' : ''} menu-list-item`} 
+            onClick={() => {
+              setActive(index);
+              filterItems(category);
+            }}
+            key={index}>
                 {category}
             </li>
            ) 

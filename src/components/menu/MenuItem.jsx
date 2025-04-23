@@ -1,6 +1,12 @@
 import React from 'react'
 import Stars from '../stars/Stars'
 const MenuItem = ({menuItems}) => {
+    const formatNumber= (num) =>
+        new Intl.NumberFormat('en',{
+            notation:'compact',
+            compactDisplay: 'short',
+
+        }).format(num);
   return (
     <>
     {
@@ -16,9 +22,9 @@ const MenuItem = ({menuItems}) => {
                     <h3 className="menu-title">{title}</h3>
                     <p className="menu-description">{description}</p>
                     <div className="menu-rate">
-                        <Stars/>
+                        <Stars stars={stars}/>
                         <span>
-                            {stars} {reviews}
+                            {stars } ({formatNumber(reviews)})
                         </span>
                     </div>
                 </article>

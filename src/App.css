@@ -115,6 +115,9 @@ img{
 .section{
   padding-block: 6rem;
 }
+.section:not(:is(.about, .menu)) .section-header{
+  text-align: center;
+}
 /*=============== LAYOUT ===============*/
 .container{
   max-width: 1230px;
