@@ -67,7 +67,7 @@ const optionsTiming = [
 const Reservation = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
-    <section className="reservation-container container">
+    <section className="reservation reservation-container container">
       <form action="" className="reservation-form grid">
          <div className="reservation-group grid">
               <h3 className="reservation-title">Book Your Table</h3>

@@ -1,18 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../../assets/logo.png';
 import { navLinks } from '../../Data';
 import ScrollLink from '../link/ScrollLink';
 import { FaCircleArrowRight } from "react-icons/fa6";
 import { CgMenuLeftAlt } from "react-icons/cg";
+import { animateScroll } from 'react-scroll';
+import {Link} from 'react-scroll';
+
 import "./header.css";
 
 const Header = () => {
+  //
+  const [scrollNaw, setScrollNav] = useState(false);
+
+  const changeNav = () => {
+    if (window.scrollY >= 80) {
+      setScrollNav(true); // fixed typo
+    } else {
+      setScrollNav(false);
+    }
+  };
+  const scrollTop = () => {
+    animateScroll.scrollToTop();
+  };
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', changeNav);
+    return () => window.removeEventListener('scroll', changeNav); // cleanup
+  }, []); // run once on mount
+
   return (
-    <header className="header">
+    <header className={`${scrollNaw ? 'scroll-header' : ''} header`}>
       <nav className="nav container">
-        <a href="/" className="nav-logo">
+        <Link to="/" onClick={scrollTop} className="nav-logo">
           <img src={Logo} alt="Site Logo" className="nav-logo-img" />
-        </a>
+        </Link>
         <div className="nav-menu">
           <ul className="nav-list">
             {navLinks.map((navLink, index) => (
@@ -20,6 +43,7 @@ const Header = () => {
                 <ScrollLink 
                   to={navLink} 
                   name={navLink} 
+                  extraProps={{ spy: true }}
                   className="nav-link" 
                 />
               </li>
@@ -29,6 +53,7 @@ const Header = () => {
         <div className="nav-buttons">
         <ScrollLink 
                   to='reservation' 
+                  extraProps={{ offset: -150 }}
                   name='Book Now'
                   className='button'
                   icon={<FaCircleArrowRight className='button-icon'/>}

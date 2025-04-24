@@ -87,6 +87,7 @@ img{
   border-radius: 2rem 2rem 0 2rem;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
   z-index: 10;
 }
 .button::before{

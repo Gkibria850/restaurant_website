@@ -49,7 +49,7 @@
     height: 7px;
     background-color: var(--first-color);
     opacity: 1;
-    margin-inline: 0.75rem;
+    margin-inline: 1.75rem;
 }
 .swiper-pagination-bullet-active{
     width: 18px;

@@ -1,12 +1,12 @@
 import React from 'react';
+import {Link} from 'react-scroll';
 
-
-const ScrollLink = ({ to, name, className, icon }) => {
+const ScrollLink = ({ to, name, className, icon, extraProps = {} }) => {
   return (
-    <a href={to} className={className}>
+    <Link to={to} smooth={true} duration={500} {...extraProps} className={className}>
       {name}
       {icon && icon}
-    </a>
+    </Link>
   );
 };
 
